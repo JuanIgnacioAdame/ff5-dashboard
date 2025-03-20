@@ -51,10 +51,10 @@ df = download_ff_data()
 print("Data processing complete.")
 
 # Initialize the Dash app
-app = dash.Dash(__name__)
+dash_app = dash.Dash(__name__)
 
 # Configure for Render deployment
-server = app.server  # This is the Flask server that Dash uses
+app = dash_app.server  # This is the Flask server that Dash uses
 
 print("Past server")
 
@@ -68,8 +68,8 @@ max_date = df_datetime.index.max()
 min_date_str = min_date.strftime('%Y-%m-%d')
 max_date_str = max_date.strftime('%Y-%m-%d')
 
-# APP LAYOUT
-app.layout = html.Div([
+# dash_app LAYOUT
+dash_app.layout = html.Div([
     # Dashboard title
     html.H1(
         "Fama-French factor returns",
@@ -120,7 +120,7 @@ app.layout = html.Div([
 ])
 
 # CALLBACK FUNCTION
-@app.callback(
+@dash_app.callback(
     [
         Output("cumulative-returns-plot", "figure"),
         Output("warning-message", "children")
@@ -261,4 +261,4 @@ def update_graph(start_date_str, end_date_str, use_log_scale):
 
 # Only run the server if this file is executed directly
 if __name__ == '__main__':
-    app.run(debug=True)
+    dash_app.run(debug=True)
