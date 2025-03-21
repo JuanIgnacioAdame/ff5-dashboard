@@ -1,5 +1,5 @@
-dash==2.14.0
-pandas==2.1.0
-numpy==1.25.2
-plotly==5.17.0
-gunicorn==21.2.0
+requests
+pandas
+plotly
+ipywidgets
+ipython
